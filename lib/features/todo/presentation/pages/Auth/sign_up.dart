@@ -70,46 +70,54 @@ class _SignupState extends State<Signup> {
                   ),
                 ),
                 const SizedBox(height: 40),
+
                 // --- EMAIL LABEL ---
-                Text("Email", style: AppTypography.body),
+                Text("EMAIL ADDRESS", style: AppTypography.body),
+
                 const SizedBox(height: 5),
                 // --- EMAIL INPUT ---
-                TextField(
-                  controller: emailController,
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(
-                      vertical: 15,
-                      horizontal: 15,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: AppColors.secondary),
+                SizedBox(
+                  width: 350,
+                  child: TextField(
+                    controller: emailController,
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
+                        vertical: 15,
+                        horizontal: 15,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(color: AppColors.secondary),
+                      ),
                     ),
                   ),
                 ),
-
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
+                // --- PASSWORD LABEL ---
+                Text("PASSWORD", style: AppTypography.body),
+                const SizedBox(height: 5),
                 // --- PASSWORD ---
-                TextField(
-                  controller: passwordController,
-                  obscureText: !isPasswordVisible,
-                  decoration: InputDecoration(
-                    labelText: "Password",
-                    prefixIcon: const Icon(Icons.lock_outline),
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        isPasswordVisible
-                            ? Icons.visibility
-                            : Icons.visibility_off,
+                SizedBox(
+                  width: 350,
+                  child: TextField(
+                    controller: passwordController,
+                    obscureText: !isPasswordVisible,
+                    decoration: InputDecoration(
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          isPasswordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            isPasswordVisible = !isPasswordVisible;
+                          });
+                        },
                       ),
-                      onPressed: () {
-                        setState(() {
-                          isPasswordVisible = !isPasswordVisible;
-                        });
-                      },
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
                     ),
                   ),
                 ),
