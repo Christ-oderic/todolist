@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:todolist/bloc/authBloc/auth_bloc.dart';
+import 'package:todolist/features/todo/presentation/pages/Auth/login.dart';
 import 'package:todolist/features/todo/presentation/pages/home_page.dart';
 import 'package:todolist/features/todo/presentation/widgets/app_button.dart';
 import 'package:todolist/features/todo/presentation/widgets/onboard/onboarding_item.dart';
@@ -66,7 +67,7 @@ class _SignupState extends State<Signup> {
                   child: OnboardingItem(
                     paddingValue: 100,
                     icon: Symbols.check_circle_outline_rounded,
-                    title: "Let's Get Start",
+                    title: "Let's Get Started!!",
                   ),
                 ),
                 const SizedBox(height: 40),
@@ -186,7 +187,7 @@ class _SignupState extends State<Signup> {
                       onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute<void>(
-                            builder: (context) => const HomePage(),
+                            builder: (context) => const Login(),
                           ),
                         );
                       },
