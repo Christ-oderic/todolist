@@ -20,6 +20,11 @@ class LogInWithEmailEvent extends AuthEvent {
   List<Object> get props => [email, password];
 }
 
+class SignWithGoogleEvent extends AuthEvent {
+  @override
+  List<Object> get props => [];
+}
+
 class SignOutEvent extends AuthEvent {
   @override
   List<Object> get props => [];

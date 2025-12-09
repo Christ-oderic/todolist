@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:todolist/bloc/authBloc/auth_bloc.dart';
 import 'package:todolist/features/todo/presentation/pages/Auth/sign_up.dart';
+import 'package:todolist/features/todo/presentation/pages/home_page.dart';
 import 'package:todolist/features/todo/presentation/widgets/app_button.dart';
 import 'package:todolist/features/todo/presentation/widgets/onboard/onboarding_item.dart';
 import 'package:todolist/theme/app_colors.dart';
@@ -36,8 +37,30 @@ class _LoginState extends State<Login> {
       child: Scaffold(
         body: BlocListener<AuthBloc, AuthState>(
           listener: (context, state) {
-            // TODO: implement listener
+            if (state is AuthLoading) {
+              showDialog(
+                context: context,
+                barrierDismissible: false,
+                builder: (_) =>
+                    const Center(child: CircularProgressIndicator()),
+              );
+            }
+
+            if (state is AuthFailure) {
+              Navigator.of(context).pop(); // ferme loader
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text(state.error)));
+            }
+
+            if (state is AuthSuccess) {
+              Navigator.of(context).pop(); // ferme loader
+              Navigator.of(context).push(
+                MaterialPageRoute<void>(builder: (context) => const HomePage()),
+              );
+            }
           },
+
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -135,7 +158,9 @@ class _LoginState extends State<Login> {
                     ),
                     const SizedBox(width: 15),
                     AppButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<AuthBloc>().add(SignWithGoogleEvent());
+                      },
                       isCircular: true,
                       borderRadius: 2,
                       icon: Icons.g_mobiledata,

@@ -158,7 +158,9 @@ class _SignupState extends State<Signup> {
                     ),
                     const SizedBox(width: 15),
                     AppButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<AuthBloc>().add(SignWithGoogleEvent());
+                      },
                       isCircular: true,
                       borderRadius: 2,
                       icon: Icons.g_mobiledata,
