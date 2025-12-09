@@ -150,7 +150,9 @@ class _LoginState extends State<Login> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     AppButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<AuthBloc>().add(SignInWithFacebookEvent());
+                      },
                       isCircular: true,
                       borderRadius: 2,
                       icon: Icons.facebook,

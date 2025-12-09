@@ -46,6 +46,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     });
 
+    on<SignInWithFacebookEvent>((event, emit) async {
+      emit(AuthLoading());
+      try {
+        final user = await repository.signInWithFacebook();
+        emit(AuthSuccess(user));
+      } catch (e) {
+        emit(AuthFailure(e.toString()));
+      }
+    });
+
     on<SignOutEvent>((event, emit) async {
       emit(AuthLoading());
       try {
