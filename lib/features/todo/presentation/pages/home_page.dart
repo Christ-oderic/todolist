@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:todolist/cubit/projectCubit/project_cubit.dart';
 import 'package:todolist/features/todo/presentation/widgets/label_section.dart';
 import 'package:todolist/features/todo/presentation/widgets/project_section.dart';
 import 'package:todolist/features/todo/presentation/widgets/statut_section.dart';
@@ -10,6 +12,16 @@ import 'package:todolist/theme/app_typography.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => ProjectCubit()..loadProjects(),
+      child: _HomeView(),
+    );
+  }
+}
+
+class _HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Theme(
