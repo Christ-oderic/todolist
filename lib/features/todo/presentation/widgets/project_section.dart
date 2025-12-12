@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todolist/cubit/projectCubit/project_cubit.dart';
 import 'package:todolist/cubit/projectCubit/project_state.dart';
-import 'package:todolist/features/todo/data/datasources/models/projects_model.dart';
+import 'package:todolist/features/todo/domain/models/project_model.dart';
 import 'package:todolist/theme/app_colors.dart';
 import 'package:todolist/theme/app_typography.dart';
+
+import 'app_button.dart';
 
 class ProjectSection extends StatefulWidget {
   const ProjectSection({super.key});
@@ -24,7 +26,7 @@ class _ProjectSectionState extends State<ProjectSection> {
     showDialog(
       context: context,
       builder: (context) => Dialog(
-        backgroundColor: Colors.white.withValues(alpha: 0.95),
+        backgroundColor: AppColors.background.withValues(alpha: 0.95),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
@@ -56,14 +58,17 @@ class _ProjectSectionState extends State<ProjectSection> {
                   decoration: const InputDecoration(labelText: 'Couleur'),
                 ),
                 const SizedBox(height: 20),
-                ElevatedButton(
+                AppButton(
                   onPressed: () {
                     if (name.isNotEmpty) {
                       cubit.addProject(name: name, color: color);
                       Navigator.pop(context);
                     }
                   },
-                  child: const Text('Ajouter'),
+                  width: 100.0,
+                  isCircular: false,
+                  borderRadius: 20,
+                  text: 'Ajouter',
                 ),
               ],
             ),
@@ -124,6 +129,14 @@ class _ProjectSectionState extends State<ProjectSection> {
                 const Center(child: CircularProgressIndicator())
               else if (state is ProjectError)
                 Text("Erreur: ${state.message}")
+              else if (projects.isEmpty)
+                const Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Text(
+                    "Ajouter un projet",
+                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                  ),
+                )
               else
                 Column(
                   children: projects.map((project) {

@@ -1,4 +1,4 @@
-import 'package:todolist/features/todo/data/datasources/models/projects_model.dart';
+import 'package:todolist/features/todo/domain/models/project_model.dart';
 
 abstract class ProjectState {}
 

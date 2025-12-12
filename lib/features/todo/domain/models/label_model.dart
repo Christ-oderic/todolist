@@ -1,28 +1,31 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class ProjectModel {
+class LabelModel {
   final String id;
   final String name;
   final Color color;
-  final int taskCount;
+  final int labelCounts;
+  final String userId;
   final DateTime? createdAt;
 
-  ProjectModel({
+  LabelModel({
     required this.id,
     required this.name,
     required this.color,
-    required this.taskCount,
+    required this.userId,
+    required this.labelCounts,
     this.createdAt,
   });
 
-  factory ProjectModel.fromDocument(DocumentSnapshot doc) {
+  factory LabelModel.fromDocument(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
-    return ProjectModel(
+    return LabelModel(
       id: doc.id,
       name: data['name'] ?? '',
       color: _colorFromString(data['color']),
-      taskCount: data['taskcount'] ?? 0,
+      labelCounts: data['labelCounts'] ?? 0,
+      userId: data['userId'] ?? '',
       createdAt: data['createdAt'] != null
           ? (data['createdAt'] as Timestamp).toDate()
           : null,
@@ -33,7 +36,8 @@ class ProjectModel {
     return {
       'name': name,
       'color': _colorToString(color),
-      'taskcount': taskCount,
+      'labelCounts': labelCounts,
+      'userId': userId,
       'createdAt': createdAt ?? FieldValue.serverTimestamp(),
     };
   }
@@ -46,6 +50,8 @@ class ProjectModel {
         return Colors.orange;
       case "Colors.red":
         return Colors.red;
+      case "Colors.yellow":
+        return Colors.yellow;
       default:
         return Colors.grey;
     }
@@ -55,6 +61,7 @@ class ProjectModel {
     if (color == Colors.blue) return "Colors.blue";
     if (color == Colors.orange) return "Colors.orange";
     if (color == Colors.red) return "Colors.red";
+    if (color == Colors.yellow) return "Colors.yellow";
     return "Colors.grey";
   }
 }

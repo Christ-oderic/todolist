@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:todolist/cubit/labelsCubit/label_cubit.dart';
 import 'package:todolist/cubit/projectCubit/project_cubit.dart';
 import 'package:todolist/features/todo/presentation/widgets/label_section.dart';
 import 'package:todolist/features/todo/presentation/widgets/project_section.dart';
@@ -14,8 +15,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => ProjectCubit()..loadProjects(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => ProjectCubit()..loadProjects()),
+        BlocProvider(create: (_) => LabelCubit()..loadLabels()),
+      ],
       child: _HomeView(),
     );
   }
@@ -163,10 +167,13 @@ class _HomeView extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: const Icon(
-                          Symbols.lists_rounded,
-                          size: 40,
-                          color: AppColors.primary,
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Symbols.lists_rounded,
+                            size: 40,
+                            color: AppColors.primary,
+                          ),
                         ),
                       ),
                     ],
@@ -182,10 +189,13 @@ class _HomeView extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: const Icon(
-                          Symbols.calendar_add_on_rounded,
-                          size: 40,
-                          color: AppColors.primary,
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Symbols.calendar_add_on_rounded,
+                            size: 40,
+                            color: AppColors.primary,
+                          ),
                         ),
                       ),
                     ],
