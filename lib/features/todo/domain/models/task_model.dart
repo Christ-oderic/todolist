@@ -28,7 +28,7 @@ class TaskModel {
     final data = doc.data() as Map<String, dynamic>? ?? {};
     return TaskModel(
       id: doc.id,
-      libelle: data['title'] ?? '',
+      libelle: data['libelle'] ?? '',
       projectId: data['project'],
       labelIds: List<String>.from(data['labels'] ?? []),
       statut: stringToTaskStatus(data['statut'] ?? 'todo'),

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:todolist/cubit/labelsCubit/label_cubit.dart';
 import 'package:todolist/cubit/projectCubit/project_cubit.dart';
+import 'package:todolist/features/todo/presentation/pages/task_view.dart';
 import 'package:todolist/features/todo/presentation/widgets/label_section.dart';
 import 'package:todolist/features/todo/presentation/widgets/project_section.dart';
 import 'package:todolist/features/todo/presentation/widgets/statut_section.dart';
@@ -168,7 +169,13 @@ class _HomeView extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute<void>(
+                                builder: (context) => const TaskPage(),
+                              ),
+                            );
+                          },
                           icon: Icon(
                             Symbols.lists_rounded,
                             size: 40,

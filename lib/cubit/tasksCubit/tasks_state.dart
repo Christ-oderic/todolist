@@ -9,6 +9,15 @@ class TaskInitial extends TaskState {}
 
 class TaskLoading extends TaskState {}
 
+class TaskLoaded extends TaskState {
+  final List<TaskModel> tasks;
+
+  TaskLoaded(this.tasks);
+
+  @override
+  List<Object?> get props => [tasks];
+}
+
 class TaskSuccess extends TaskState {}
 
 class TaskError extends TaskState {
