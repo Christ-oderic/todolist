@@ -271,7 +271,7 @@ Widget _taskItem(TaskModel task) {
 
 Widget _header() {
   return Container(
-    height: 200,
+    height: 175,
     color: AppColors.secondary,
     child: Stack(
       children: [
@@ -323,11 +323,11 @@ Widget _header() {
           ),
         ),
         Positioned(
-          top: 85,
-          right: 15,
+          top: 65,
+          right: 10,
           child: Container(
-            width: 60,
-            height: 60,
+            width: 45,
+            height: 45,
             decoration: const BoxDecoration(
               color: AppColors.primary,
               shape: BoxShape.circle,
@@ -335,7 +335,7 @@ Widget _header() {
             child: IconButton(
               icon: const Icon(
                 Icons.more_horiz_rounded,
-                size: 40,
+                size: 30,
                 color: Colors.white,
               ),
               onPressed: () {},
@@ -344,12 +344,12 @@ Widget _header() {
         ),
         Positioned.fill(
           child: Align(
-            alignment: Alignment.centerRight,
+            alignment: Alignment.center,
             child: Padding(
-              padding: const EdgeInsets.only(right: 90),
+              padding: const EdgeInsets.only(left: 50),
               child: Container(
                 height: 35,
-                width: 240,
+                width: 180,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -368,11 +368,7 @@ Widget _header() {
                     const SizedBox(width: 10),
                     Expanded(
                       child: TextField(
-                        decoration: InputDecoration(
-                          hintText: "Search tasks...",
-                          border: InputBorder.none,
-                          hintStyle: TextStyle(color: Colors.grey),
-                        ),
+                        decoration: InputDecoration(border: InputBorder.none),
                       ),
                     ),
                   ],

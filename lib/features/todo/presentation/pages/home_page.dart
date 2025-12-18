@@ -36,7 +36,7 @@ class _HomeView extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: 200,
+                height: 175,
                 color: AppColors.secondary,
                 child: Stack(
                   children: [
@@ -92,11 +92,11 @@ class _HomeView extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      top: 85,
-                      right: 15,
+                      top: 65,
+                      right: 10,
                       child: Container(
-                        width: 60,
-                        height: 60,
+                        width: 45,
+                        height: 45,
                         decoration: const BoxDecoration(
                           color: AppColors.primary,
                           shape: BoxShape.circle,
@@ -104,7 +104,7 @@ class _HomeView extends StatelessWidget {
                         child: IconButton(
                           icon: const Icon(
                             Symbols.settings,
-                            size: 40,
+                            size: 30,
                             color: Colors.white,
                           ),
                           onPressed: () {},
@@ -113,12 +113,12 @@ class _HomeView extends StatelessWidget {
                     ),
                     Positioned.fill(
                       child: Align(
-                        alignment: Alignment.centerRight,
+                        alignment: Alignment.center,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 90),
+                          padding: const EdgeInsets.only(left: 50),
                           child: Container(
                             height: 35,
-                            width: 240,
+                            width: 180,
                             padding: const EdgeInsets.symmetric(horizontal: 16),
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -138,9 +138,7 @@ class _HomeView extends StatelessWidget {
                                 Expanded(
                                   child: TextField(
                                     decoration: InputDecoration(
-                                      hintText: "Search tasks...",
                                       border: InputBorder.none,
-                                      hintStyle: TextStyle(color: Colors.grey),
                                     ),
                                   ),
                                 ),
@@ -153,7 +151,7 @@ class _HomeView extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 5),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -163,7 +161,7 @@ class _HomeView extends StatelessWidget {
                       Text("List", style: AppTypography.titre3),
                       const SizedBox(height: 5),
                       Container(
-                        padding: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(12),
@@ -178,7 +176,7 @@ class _HomeView extends StatelessWidget {
                           },
                           icon: Icon(
                             Symbols.lists_rounded,
-                            size: 40,
+                            size: 25,
                             color: AppColors.primary,
                           ),
                         ),
@@ -191,7 +189,7 @@ class _HomeView extends StatelessWidget {
                       Text("Calendar", style: AppTypography.titre3),
                       const SizedBox(height: 5),
                       Container(
-                        padding: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(12),
@@ -200,40 +198,41 @@ class _HomeView extends StatelessWidget {
                           onPressed: () {},
                           icon: Icon(
                             Symbols.calendar_add_on_rounded,
-                            size: 40,
+                            size: 25,
                             color: AppColors.primary,
                           ),
                         ),
                       ),
                     ],
                   ),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text("Kanban", style: AppTypography.titre3),
-                      const SizedBox(height: 5),
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: const Icon(
-                          Symbols.view_kanban_rounded,
-                          size: 40,
-                          color: AppColors.primary,
-                        ),
-                      ),
-                    ],
-                  ),
+                  // Column(
+                  //   mainAxisSize: MainAxisSize.min,
+                  //   children: [
+                  //     Text("Kanban", style: AppTypography.titre3),
+                  //     const SizedBox(height: 5),
+                  //     Container(
+                  //       padding: const EdgeInsets.all(10),
+                  //       decoration: BoxDecoration(
+                  //         color: Colors.white,
+                  //         borderRadius: BorderRadius.circular(12),
+                  //       ),
+                  //       child: const Icon(
+                  //         Symbols.view_kanban_rounded,
+                  //         size: 40,
+                  //         color: AppColors.primary,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                 ],
               ),
-              const SizedBox(height: 5),
+              const SizedBox(height: 0),
               const ProjectSection(),
               const SizedBox(height: 5),
               const LabelSection(),
               const SizedBox(height: 5),
               const StatutSection(),
+              const SizedBox(height: 25),
             ],
           ),
         ),
